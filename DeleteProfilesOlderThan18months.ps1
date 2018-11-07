@@ -1,0 +1,2 @@
+$DATE=(Get-Date).AddDays(-531)
+Get-QADUser -SizeLimit 100000000 | Where-Object {$_.Displayname -notlike "!*" -and $_.displayname -notlike "#*" -and $_.lastlogondate -gt $DATE} | sort displayname | select displayname, useraccountcontrol, PasswordLastSet | export-csv c:\temp\qaold.csv
